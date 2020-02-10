@@ -9,11 +9,5 @@ use Illuminate\Support\Facades\Schema;
 class Station extends Model
 {
     //
-    static function up()
-    {
-        Schema::create('test', function (Blueprint $table) {
-            $table->bigIncrements('id');
-        });
-    }
 
 }
