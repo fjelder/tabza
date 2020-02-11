@@ -9,5 +9,11 @@ use Illuminate\Support\Facades\Schema;
 class Station extends Model
 {
     //
+	    protected $fillable = [
+        'name', 'comments'
+    ];
+	    protected $hidden = [
+				'_token'
+    ];
 
 }

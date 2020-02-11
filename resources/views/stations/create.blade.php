@@ -3,18 +3,19 @@
 @section('title', 'Dodaj nową stację')
 @section('card_title', 'Dodaj nową stację')
 @section('content')
-<form method="post" action="{{ route('stations.store') }}">
+
+<form method="POST" action="{{ route('stations.store') }}">
   @csrf
   <div class="form-group row">
     <label for="name" class="col-sm-2 col-form-label">Stacja</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="name" placeholder="Wpisz nazwę stacji">
+      <input id="name" name="name" type="text" class="form-control" placeholder="Wpisz nazwę stacji">
     </div>
   </div>
   <div class="form-group row">
     <label for="comments" class="col-sm-2 col-form-label">Uwagi</label>
     <div class="col-sm-10">
-      <textarea class="form-control" id="comments" rows="3" placeholder="Dodaj uwagi"></textarea>
+      <textarea id="comments" name="comments" class="form-control"  rows="3" placeholder="Dodaj uwagi"></textarea>
     </div>
   </div>
   <div class="form-group row">

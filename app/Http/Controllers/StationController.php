@@ -43,11 +43,10 @@ class StationController extends Controller
       $station = new Station;
       $dane = $request->all();
       $station->fill($dane);
-      // $station->name = $request->name;
-      // $station->comments = $request->comments;
-      //
       $station->save();
-        //redirect()->route('stations.index');
+      return redirect()->route('stations.index');
+// 			echo $request->input('name');
+			
     }
 
     /**
