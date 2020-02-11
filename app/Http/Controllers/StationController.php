@@ -96,5 +96,8 @@ class StationController extends Controller
     public function destroy($id)
     {
         //
+        $station = Station::find($id);
+        $station->delete();
+        return redirect()->route('stations.index');
     }
 }
