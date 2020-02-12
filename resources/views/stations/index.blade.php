@@ -35,9 +35,4 @@
   </div>
 </div>
 <a href="{{route('stations.create')}}">Dodaj nową stację</a>
-
-
-<form action="/foo/bar" method="POST">
-    @method('delete')
-</form>
 @endsection
