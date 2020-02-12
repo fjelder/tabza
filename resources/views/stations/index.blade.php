@@ -21,7 +21,11 @@
             <td><a href="{{route('stations.show', $station->id)}}">{{$station->name}}</a></td>
             <td>
               <a href="{{route('stations.edit', $station->id)}}" class="btn btn-outline-primary" role="button">Edytuj</a>
-              <a href="{{route('stations.destroy', $station->id)}}" class="btn btn-outline-danger" role="button">Usuń</a>
+              <form action="{{ route('stations.destroy', $station->id) }}" method="POST">
+   	 						@csrf
+								@method('delete')
+								<button type="submit" class="btn btn-primary">Kasuj</button>
+							</form>
             </td>
           </tr>
           @endforeach
@@ -31,4 +35,9 @@
   </div>
 </div>
 <a href="{{route('stations.create')}}">Dodaj nową stację</a>
+
+
+<form action="/foo/bar" method="POST">
+    @method('delete')
+</form>
 @endsection
