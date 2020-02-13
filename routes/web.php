@@ -23,6 +23,6 @@ Route::resource('stacje', 'StationController')->names([
 
 Route::resource('stacje.zwrotnice', 'RailroadController');
 
-//Auth::routes();
+Auth::routes();
 //
-//Route::get('/', 'StationController@index')->name('home');
+Route::get('/', 'StationController@index')->name('home');
