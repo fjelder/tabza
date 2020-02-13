@@ -44,9 +44,7 @@ class StationController extends Controller
       $dane = $request->all();
       $station->fill($dane);
       $station->save();
-      return redirect()->route('stations.index');
-// 			echo $request->input('name');
-			
+      return redirect()->route('stations.index');	
     }
 
     /**

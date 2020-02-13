@@ -6,7 +6,7 @@
 <dl class="row">
     <dt class="col-sm-3">Zwrotnice</dt>
     <dd class="col-sm-6">1/2, 3/4, 5, 6, 7ab/8cd</dd>
-    <dd class="col-sm-3">Edytuj</dd>
+    <dd class="col-sm-3"><a href="{{ route('railroad.index', $station->id) }}">Edytuj</a></dd>
 </dl>
 <dl class="row">
     <dt class="col-sm-3">Odcinki izolowane</dt>

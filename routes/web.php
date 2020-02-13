@@ -21,7 +21,12 @@ Route::resource('stacje', 'StationController')->names([
     'destroy' => 'stations.destroy',
     ]);
 
-Route::resource('stacje.zwrotnice', 'RailroadController');
+Route::resource('stacje.zwrotnice', 'RailroadController')->names([
+    'index' => 'railroad.index',
+    'create' => 'railroad.create',
+    'store' => 'railroad.store',
+    'destroy' => 'railroad.destroy',
+    ]);
 
 Auth::routes();
 //
