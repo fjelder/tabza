@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Station;
 
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
-class StationController extends Controller
+class RailroadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +13,8 @@ class StationController extends Controller
      */
     public function index()
     {
-        $stations = Station::all();
-        return view('stations.index', compact('stations', $stations));
+        //
+        echo 'działa';
     }
 
     /**
@@ -29,7 +25,6 @@ class StationController extends Controller
     public function create()
     {
         //
-        return view('stations.create');
     }
 
     /**
@@ -40,13 +35,7 @@ class StationController extends Controller
      */
     public function store(Request $request)
     {
-      $station = new Station;
-      $dane = $request->all();
-      $station->fill($dane);
-      $station->save();
-      return redirect()->route('stations.index');
-// 			echo $request->input('name');
-			
+        //
     }
 
     /**
@@ -58,8 +47,6 @@ class StationController extends Controller
     public function show($id)
     {
         //
-        $station = Station::where('id', $id)->first();
-        return view('stations.show', compact('station', $station));
     }
 
     /**
@@ -71,8 +58,6 @@ class StationController extends Controller
     public function edit($id)
     {
         //
-        $station = Station::where('id', $id)->first();
-        return view('stations.edit', compact('station', $station));
     }
 
     /**
@@ -85,11 +70,6 @@ class StationController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $station = Station::where('id', $id)->first();
-        $station->name = $request->input('name');
-        $station->comments = $request->input('comments');
-        $station->save();
-        return redirect()->route('stations.index');
     }
 
     /**
@@ -101,8 +81,5 @@ class StationController extends Controller
     public function destroy($id)
     {
         //
-        $station = Station::find($id);
-        $station->delete();
-        return redirect()->route('stations.index');
     }
 }

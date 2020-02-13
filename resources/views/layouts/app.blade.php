@@ -18,7 +18,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css?v=2.0.0') }}" rel="stylesheet">
-    <link href="{{ asset('css/demo.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/demo2.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="wrapper ">

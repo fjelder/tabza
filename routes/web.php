@@ -11,10 +11,18 @@
 |
 */
 
-Route::resources([
-  'stations' => 'StationController',
-]);
+Route::resource('stacje', 'StationController')->names([
+    'index' => 'stations.index',
+    'create' => 'stations.create',
+    'store' => 'stations.store',
+    'show' => 'stations.show',
+    'edit' => 'stations.edit',
+    'update' => 'stations.update',
+    'destroy' => 'stations.destroy',
+    ]);
 
-Auth::routes();
+Route::resource('stacje.zwrotnice', 'RailroadController');
 
-Route::get('/', 'StationController@index')->name('home');
+//Auth::routes();
+//
+//Route::get('/', 'StationController@index')->name('home');

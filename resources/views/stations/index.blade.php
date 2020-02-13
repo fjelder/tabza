@@ -10,6 +10,7 @@
         <th scope="col">#</th>
         <th scope="col">Nazwa</th>
         <th scope="col">Komentarz</th>
+        <th scope="col">Ostatnia aktualizacja</th>
         <th scope="col">Akcja</th>
       </tr>
     </thead>
@@ -19,6 +20,7 @@
         <th scope="row">{{$key+1}}</th>
         <td><a href="{{route('stations.show', $station->id)}}">{{$station->name}}</a></td>
         <td>{{$station->comments}}</td>
+        <td>{{$station->updated_at}}</td>
         <td>
             <form action="{{ route('stations.destroy', $station->id) }}" method="POST">
             @csrf
