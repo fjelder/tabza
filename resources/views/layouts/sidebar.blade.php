@@ -8,8 +8,8 @@
             <img src="/img/logo-small.png">
           </div>
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+        <a href="{{ route('stations.index')}}" class="simple-text logo-normal">
+          {{ config('app.name', 'Laravel') }}
  <!--          <div class="logo-image-big">
             <img src="/img/logo-big.png">
           </div> -->

@@ -42,7 +42,11 @@ class RailroadController extends Controller
      */
     public function store(Request $request, $station_id)
     {
-        //
+        $railroad = new Railroad;
+        $dane = $request->all();
+        $railroad->fill($dane);
+        $railroad->station_id = $station_id;
+        $railroad->save();
         return redirect()->route('railroad.index', $station_id);	
     }
 
@@ -90,4 +94,5 @@ class RailroadController extends Controller
     {
         //
     }
+    
 }

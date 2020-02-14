@@ -13,4 +13,5 @@ class Railroad extends Model
 	    protected $hidden = [
 				'_token'
     ];
+    public $timestamps = false;
 }

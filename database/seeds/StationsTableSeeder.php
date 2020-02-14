@@ -12,12 +12,12 @@ class StationsTableSeeder extends Seeder
     public function run()
     {
         //
-        $stations = array('Kowalów', 'Laski Lubuskie', 'Ługi Górzyckie');
+        $stations = array('Poznań', 'Warszawa', 'Łódź');
         for($i = 0; $i < 3; $i++)
         {
           DB::table('stations')->insert([
               'name' => $stations[$i],
-              'comments' => Str::random(15),
+              'comments' => '',
               'created_at' => now(),
               'updated_at' => now()
           ]);

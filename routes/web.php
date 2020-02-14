@@ -25,6 +25,7 @@ Route::resource('stacje.zwrotnice', 'RailroadController')->names([
     'index' => 'railroad.index',
     'create' => 'railroad.create',
     'store' => 'railroad.store',
+    'update' => 'railroad.update',
     'destroy' => 'railroad.destroy',
     ]);
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Station;
-
+use App\Railroad;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
@@ -57,7 +57,12 @@ class StationController extends Controller
     {
         //
         $station = Station::where('id', $id)->first();
-        return view('stations.show', compact('station', $station));
+        $railroads = Railroad::where('station_id', $id)->get();
+        //return view('stations.show', compact('station', [$station, $railroads]));
+        return view('stations.show', [
+            'station' => $station, 
+            'railroads' => $railroads
+        ]);
     }
 
     /**

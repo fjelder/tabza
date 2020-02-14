@@ -6,33 +6,26 @@
     <div class="col-md-3">
         <div class="card card-user">
             <div class="card-header">
-                <h5 class="card-title">Liczba zwrotnic</h5>
+                <h5 class="card-title">Dodaj zwrotnicę</h5>
             </div>
             <div class="card-body">
-                <form method="post" action="#">
+                <form method="POST" action="{{ route('railroad.store', $station_id) }}">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Liczba zwrotnic</label>
-                                <input name="number" type="text" class="form-control" placeholder="..." value="{{ count($railroads)}}">
+                                <label>Nazwa zwrotnicy</label>
+                                <input name="name" type="text" class="form-control" placeholder="..." value="">
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="update ml-auto mr-auto">
-                            <button type="submit" class="btn btn-primary btn-round">Aktualizuj</button>
+                            <button type="submit" class="btn btn-primary btn-round">Dodaj</button>
                         </div>
                     </div>
                 </form>
-                
-                
-                <input type="text" id="member" name="member" value="">Number of members: (max. 10)<br />
-    <a href="#" id="filldetails" onclick="addFields()">Fill Details</a>
-    <div id="container"/>
-                
-                
             </div>
         </div>
     </div>
@@ -52,6 +45,9 @@
                                 <th scope="col">Usuń</th>
                             </tr>
                         </thead>
+                        <form action="{{ route('railroad.update', [$station_id, 1])}}" method="post">
+                        @csrf
+                        @method('put')
                         <tbody>
                             @foreach ($railroads as $key => $railroad)
                             <tr>
@@ -69,6 +65,10 @@
                             </tr>
                             @endforeach
                         </tbody>
+
+                            <tr><td><button type="submit" class="btn btn-primary btn-round">Daktualizuj</button></td></tr>
+ 
+                        </form>
                     </table>
                 </div>
             </div>

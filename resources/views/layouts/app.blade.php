@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
 
     <!-- Scripts -->
-    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
+     <script src="{{ asset('js/app.js') }}" defer></script> 
 
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -18,7 +18,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css?v=2.0.0') }}" rel="stylesheet">
-    <link href="{{ asset('css/demo2.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/demo.css') }}" rel="stylesheet">
+    
+    <script>
+        console.log("Nasz pierwszy skrypt!");
+    </script>
 </head>
 <body>
     <div class="wrapper ">
@@ -30,14 +34,9 @@
         <div class="content">
         <div class="row">
           <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">@yield('card_title')</h4>
-              </div>
-              <div class="card-body">
+
                 @yield('content')
-              </div>
-            </div>
+              
           </div>
 
         </div>
