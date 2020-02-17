@@ -25,10 +25,15 @@ Route::resource('stacje.zwrotnice', 'RailroadController')->names([
     'index' => 'railroad.index',
     'create' => 'railroad.create',
     'store' => 'railroad.store',
+    'edit' => 'railroad.edit',
     'update' => 'railroad.update',
     'destroy' => 'railroad.destroy',
+    ])->except(['update']);
+Route::put('stacje/{id}/zwrotnice', 'RailroadController@update')->name('railroad.update');
+Route::resource('zaklady_linii_kolejowych', 'izController')->names([
+    'index' => 'iz.index',
+    'edit' => 'iz.edit',
     ]);
-
-Auth::routes();
+// Auth::routes();
 //
 Route::get('/', 'StationController@index')->name('home');

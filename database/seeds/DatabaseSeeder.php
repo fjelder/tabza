@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             StationsTableSeeder::class,
             RailroadsTableSeeder::class,
+            izTableSeeder::class,
             ]);
     }
 }

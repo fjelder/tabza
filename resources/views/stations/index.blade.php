@@ -1,44 +1,56 @@
-@extends('layouts.app')
-
-@section('title', 'Lista stacji')
+@extends('layouts.app') 
+@section('title', 'Lista stacji') 
 @section('content')
-<div class="card">
-    <div class="card-header">
-        <h4 class="card-title">Lista stacji</h4>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table">
-                <thead class=" text-primary">
+<div class="col-md-12">
+    <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title">Lista stacji</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <table class="table table-sm">
+                <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nazwa</th>
-                        <th scope="col">Komentarz</th>
-                        <th scope="col">Ostatnia aktualizacja</th>
-                        <th scope="col">Akcja</th>
+                        <th>#</th>
+                        <th>Nazwa stacji</th>
+                        <th>Linia kolejowa</th>
+                        <th>Zakład linii kolejowych</th>
+                        <th>Ostatnia aktualizacja</th>
+                        <th>Akcja</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($stations as $key => $station)
                     <tr>
                         <th scope="row">{{$key+1}}</th>
-                        <td><a href="{{route('stations.show', $station->id)}}">{{$station->name}}</a></td>
-                        <td>{{$station->comments}}</td>
+                        <td>
+                            <a href="{{route('stations.show', $station->id)}}">{{$station->name}}</a>
+                        </td>
+                        <td>Linia Kolejowa nr 15</td>
+                        <td>Zakład Linii Kolejowych w Poznaniu</td>
                         <td>{{$station->updated_at}}</td>
                         <td>
                             <form action="{{ route('stations.destroy', $station->id) }}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <a href="{{route('stations.edit', $station->id)}}" class="btn btn-outline-primary" role="button">Edytuj</a>
-                                <button class="btn btn-outline-danger" type="submit">Usuń</button>
+                                @csrf @method('delete')
+                                <a href="{{route('stations.edit', $station->id)}}"
+                                    class="btn btn-float btn-outline-primary btn-sm" role="button"><i
+                                        class="far fa-edit"></i></a>
+                                <button class="btn btn-float btn-outline-danger btn-sm" type="submit">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <a href="{{route('stations.create')}}" class="btn btn-primary btn-float">Dodaj nową stację</a>
         </div>
     </div>
+    <!-- /.card -->
 </div>
-<a href="{{route('stations.create')}}">Dodaj nową stację</a>
 @endsection

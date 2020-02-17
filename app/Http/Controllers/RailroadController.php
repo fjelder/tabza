@@ -47,7 +47,7 @@ class RailroadController extends Controller
         $railroad->fill($dane);
         $railroad->station_id = $station_id;
         $railroad->save();
-        return redirect()->route('railroad.index', $station_id);	
+        return redirect()->route('railroad.index', $station_id)->with('status', 'Zwrotnica została dodana');	
     }
 
     /**
@@ -79,9 +79,20 @@ class RailroadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $station_id)
     {
         //
+        //$railroad = new Railroad;
+        $tablica = array_filter($request->input('zwrotnica'));
+        foreach($tablica as $key => $x)
+        {
+            $railroad = Railroad::where('id', $key)->first();
+            $railroad->name = $x;
+            $railroad->station_id = $station_id;
+            $railroad->save();
+            //echo $key .'->'.$x.'</br>';
+        }
+        return redirect()->route('railroad.index', $station_id)->with('status', 'Lista zwrotnic zaktualizowana');
     }
 
     /**
@@ -90,9 +101,12 @@ class RailroadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($station_id, $id)
     {
         //
+        $railroad = Railroad::find($id);
+        $railroad->delete();
+        return redirect()->route('railroad.index', $station_id);	
     }
     
 }
