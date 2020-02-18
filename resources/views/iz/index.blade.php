@@ -1,30 +1,57 @@
 @extends('layouts.app')
 @section('title', 'Lista stacji')
 @section('content')
-
-@foreach ($izs as $iz)
-<div class="col-sm-4">
-    <div class="card card-primary card-outline">
+<div class="col-md-12">
+    <div class="card card-danger card-outline">
         <div class="card-header">
-            <a href="{{ route('iz.edit', $iz->id)}}">{{ $iz->name }}</a>
+            <h3 class="card-title">Zakłady Linii Kolejowych</h3>
+
+            <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Wyszukaj">
+
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <h4 class="card-title">ul. {{ $iz->street }} {{$iz->number}}</h4>
-            <p class="card-text">
-                @php
-                $postcode[0] = substr($iz->postcode, 0, 2);
-                $postcode[1] = substr($iz->postcode, 2);
-                echo $postcode[0].'-'.$postcode[1].' '.$iz->city;
-                @endphp
-            </p>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0" style="height: 500px;">
+            <table class="table table-head-fixed text-nowrap">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">ID</th>
+                        <th>Nazwa</th>
+                        <th>Adres</th>
+                        <th>Edytuj</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($izs as $iz)
+                    <tr>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{ $iz->name }}</td>
+                        <td>{{ $iz->street }} {{$iz->number}},
+                            @php
+                            $postcode[0] = substr($iz->postcode, 0, 2);
+                            $postcode[1] = substr($iz->postcode, 2);
+                            echo $postcode[0].'-'.$postcode[1].' '.$iz->city;
+                            @endphp
+                        </td>
+                        <td>
+                            <a href="{{ route('iz.edit', $iz->id) }}" class="btn btn-float btn-outline-primary btn-sm" role="button"><i class="far fa-edit"></i></a>
+                        </td>
+
+                    </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
         </div>
-        <div class="card-footer">
-            <span class="text-muted p-0">
-                Ost. aktualizacja: {{$iz->created_at->format('d/m/Y')}}
-            </span>
-        </div>
+        <!-- /.card-body -->
     </div>
+    <!-- /.card -->
 </div>
-@endforeach
 
 @endsection
