@@ -1,0 +1,1 @@
+select stations.name, lk.number, lk.nameA, lk.nameB from stations inner join station_lk on stations.id = station_lk.station_id inner join lk on lk.id = station_lk.lk_id

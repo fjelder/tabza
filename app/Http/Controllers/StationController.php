@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Station;
 use App\Railroad;
+use App\lk;
+use App\iz;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
@@ -18,6 +20,16 @@ class StationController extends Controller
     public function index()
     {
         $stations = Station::all();
+        //$stations = Station::find(1)->lks()->orderBy('nameA')->get();
+        // echo '<pre>';
+        // var_dump($stations);
+        // echo '</pre>';
+
+        // foreach ($stations->lks as $lkx) {
+
+        //     echo $lkx.'</br>';
+        //     //
+        // }
         return view('stations.index', compact('stations', $stations));
     }
 

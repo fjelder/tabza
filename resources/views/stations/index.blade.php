@@ -1,10 +1,18 @@
-@extends('layouts.app') 
-@section('title', 'Lista stacji') 
+@extends('layouts.app')
+@section('title', 'Lista stacji')
 @section('content')
 <div class="col-md-12">
     <div class="card card-primary card-outline">
         <div class="card-header">
             <h3 class="card-title">Lista stacji</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                    title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip"
+                    title="Remove">
+                    <i class="fas fa-times"></i></button>
+            </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body p-0 table-responsive">

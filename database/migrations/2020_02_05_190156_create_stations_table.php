@@ -17,6 +17,10 @@ class CreateStationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('comments')->nullable();
+            $table->unsignedBigInteger('iz_id');
+            $table->foreign('iz_id')->references('id')->on('iz');
+            // $table->unsignedBigInteger('station_lk_id');
+            // $table->foreign('station_lk_id')->references('id')->on('station_lk');
             $table->timestamps();
         });
     }

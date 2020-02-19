@@ -1,6 +1,7 @@
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
+  <nav class="main-header navbar navbar-expand-md navbar-white navbar-light">
+  <div class="container">
+  <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
@@ -117,5 +118,6 @@
             class="fas fa-th-large"></i></a>
       </li>
     </ul>
+    </div>  
   </nav>
   <!-- /.navbar -->

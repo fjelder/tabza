@@ -13,7 +13,11 @@ class Station extends Model
         'name', 'comments'
     ];
 	    protected $hidden = [
-				'_token'
+		'_token'
     ];
 
+    public function lks()
+    {
+        return $this->belongsToMany('App\lk', 'station_lk');
+    }
 }

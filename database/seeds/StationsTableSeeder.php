@@ -18,10 +18,10 @@ class StationsTableSeeder extends Seeder
           DB::table('stations')->insert([
               'name' => $stations[$i],
               'comments' => '',
+              'iz_id' => rand(1,23),
               'created_at' => now(),
-              'updated_at' => now()
+              'updated_at' => now(),
           ]);
         }
-
     }
 }

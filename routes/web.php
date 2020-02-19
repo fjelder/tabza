@@ -33,6 +33,11 @@ Route::put('stacje/{id}/zwrotnice', 'RailroadController@update')->name('railroad
 Route::resource('zaklady_linii_kolejowych', 'izController')->names([
     'index' => 'iz.index',
     'edit' => 'iz.edit',
+    ])->only(['index', 'edit']);
+Route::resource('linie_kolejowe', 'lkController')->names([
+    'index' => 'lk.index',
+    'edit' => 'lk.edit',
+    'create' => 'lk.create',
     ]);
 // Auth::routes();
 //
