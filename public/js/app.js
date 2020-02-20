@@ -1,9 +1,19 @@
-$(".down").click(function () {
-    var $parent = $(this).parents(".leg");
-    $parent.insertAfter($parent.next()); 
-});
+(function($) {
 
-$(".up").click(function () {
-    var $parent = $(this).parents(".leg");
-    $parent.insertBefore($parent.prev()); 
-});
+	"use strict";
+
+	var fullHeight = function() {
+
+		$('.js-fullheight').css('height', $(window).height());
+		$(window).resize(function(){
+			$('.js-fullheight').css('height', $(window).height());
+		});
+
+	};
+	fullHeight();
+
+	$('#sidebarCollapse').on('click', function () {
+      $('#sidebar').toggleClass('active');
+  });
+
+})(jQuery);

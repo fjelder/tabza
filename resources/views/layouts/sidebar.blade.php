@@ -1,77 +1,46 @@
-<!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="{{asset('img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-            style="opacity: .8">
-        <span class="brand-text font-weight-light">{{ config('app.name', 'Laravel')}}</span>
-    </a>
+<nav id="sidebar" class="active">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Toggle Menu</span>
+        </button>
+    </div>
+    <div class="p-4 pt-5">
+        <h1><a href="index.html" class="logo">{{ config('app.name') }}</a></h1>
+        <ul class="list-unstyled components mb-5">
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Stacje kolejowe</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="{{ route('stations.index')}}">Lista stacji</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('stations.create')}}">Dodaj nową</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="{{ route('iz.index')}}">Zaklady linii kolejowych</a>
+            </li>
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Linie kolejowe</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="{{ route('lk.index') }}">Lista linii</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('lk.create') }}">Dodaj nową</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{asset('img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
-               {{ Route::currentRouteName()}}
 
-            </div>
+        <div class="footer">
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
         </div>
 
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview {{ Request::is('stacje*') ? 'menu-open' : '' }} ">
-                    <a href="#" class="nav-link {{ Request::is('stacje*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Tablice zależności
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('stations.index')}}" class="nav-link {{ Route::currentRouteName() == 'stations.index' ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Stacje</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('stations.create') }}" class="nav-link {{ Route::currentRouteName() == 'stations.create' ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dodaj nową stację</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{ route('iz.index') }}" class="nav-link {{ Request::is('zaklad*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-home"></i>
-                        <p>
-                            Zakłady LK
-                            <span class="right badge badge-danger">23</span>
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{ route('lk.index') }}" class="nav-link {{ Route::currentRouteName() == 'lk.index' ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-list"></i>
-                        <p>
-                            Linie kolejowe
-                        </p>
-                    </a>
-                </li>
-            </ul>
-
-        </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
-</aside>
+</nav>
