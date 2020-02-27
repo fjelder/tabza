@@ -12,8 +12,9 @@
 	};
 	fullHeight();
 
-	$('#sidebarCollapse').on('click', function () {
-      $('#sidebar').toggleClass('active');
+	$('#toggleMenu').on('click', function () {
+      $('.sidebar').toggleClass('closeSidebar');
+      $('.page-content').toggleClass('closeSidebar');
   });
 
 })(jQuery);

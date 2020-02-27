@@ -5,7 +5,8 @@
     <div class="col-lg-8">
         <div class="card card-danger card-outline border">
             <div class="card-header">
-                <h3 class="card-title">Linie kolejowe</h3>
+                <h5 class="card-title">Linie kolejowe</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Wykaz wszystkich linii kolejowych w systemie</h6>
             </div>
 
             <!-- /.card-header -->
@@ -59,7 +60,6 @@
             </div>
         </div>
     </div>
-
 </div>
 <!--row-->
 @endsection
