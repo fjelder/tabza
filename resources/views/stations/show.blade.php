@@ -1,4 +1,7 @@
-@extends('layouts.app') @section('title', 'Lista stacji') @section('card_title', 'Stacja ::: '.$station->name ) @section('content')
+@extends('layouts.app') 
+@section('title', 'Lista stacji') 
+@section('card_title', 'Stacja ::: '.$station->name ) 
+@section('content')
 
 <div class="col-sm-12">
 	<div class="card">
@@ -10,14 +13,30 @@
 		<div class="card-body">
 			<dl class="row border-bottom">
 
+				<dt class="col-sm-2">Linia kolejowa</dt>
+				<dd class="col-sm-10">
+					@isset($station->lks)
+					<ul>
+						@foreach($station->lks as $lk)
+						<li class="">nr {{$lk->number}} <b>{{$lk->nameA}} - {{$lk->nameB}}</b></li> 
+						@endforeach
+					</ul>
+					@endisset
+				</dd>
+
+				<dt class="col-sm-12">{{$station->izs->name}}</dt>
+			</dl>
+
+			<dl class="row border-bottom">
+
 				<dt class="col-sm-2">Zwrotnice</dt>
 				<dd class="col-sm-8">
 					@isset($railroads)
-						<ul>
-							@foreach($railroads as $railroad)
-							<li class="">{{$railroad->name}}</li> 
-							@endforeach
-						</ul>
+					<ul>
+						@foreach($railroads as $railroad)
+						<li class="">{{$railroad->name}}</li> 
+						@endforeach
+					</ul>
 					@endisset
 				</dd>
 				<dd class="col-sm-2">

@@ -21,8 +21,8 @@ class Station extends Model
         return $this->belongsToMany('App\lk', 'station_lk');
     }
 	
-		public function izs()
-		{
-			return $this->belongsTo('App\iz', 'iz_id');
-		}
+	public function izs()
+	{
+		return $this->belongsTo('App\iz', 'iz_id');
+	}
 }

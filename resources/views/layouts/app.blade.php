@@ -75,7 +75,7 @@
 			</ol>
 		</nav>
 
-		<div class="content px-3">
+		<div class="content m-0 mb-5">
 				@yield('content')
 		</div>
 	</div>

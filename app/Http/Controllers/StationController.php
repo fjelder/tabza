@@ -21,7 +21,7 @@ class StationController extends Controller
     {
         $stations = Station::all();
 			//$x = iz::find(1);
-			//dd($stations->izs->name);
+			// dd($stations[0]->izs->name);
         //$stations = Station::find(1)->lks()->orderBy('nameA')->get();
 //         echo '<pre>';
 //         var_dump($stations);
@@ -72,6 +72,7 @@ class StationController extends Controller
         //
         $station = Station::where('id', $id)->first();
         $railroads = Railroad::where('station_id', $id)->get();
+        // dd($station->lks()->get());
         //return view('stations.show', compact('station', [$station, $railroads]));
         return view('stations.show', [
             'station' => $station, 
