@@ -18,9 +18,10 @@
 </head>
 
 <body>
+
 	<div class="container p-0">
-		<nav class="navbar navbar-expand-md navbar-light bg-light border-bottom">
-			<a class="navbar-brand" href="#">Navbar</a>
+			<nav class="navbar navbar-expand-md navbar-light bg-light border-bottom">
+			<a class="navbar-brand" href="{{route('home')}}">{{ config('app.name', 'Laravel') }}</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -52,26 +53,30 @@
 					</li> -->
 
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search">
-					<button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+				<form action="" method="get" class="form-inline my-2 my-lg-0">
+					<input name="search" class="form-control mr-sm-2" type="search" placeholder="{{Request::path()}}">
+					<button class="btn btn-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
 				</form>
 			</div>
 		</nav>
 
 		<nav aria-label="breadcrumb" class="mt-2">
 			<ol class="breadcrumb " style="background: none">
-				<li class="breadcrumb-item"><a href="#">Home</a></li>
-				<li class="breadcrumb-item"><a href="#">Library</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Data</li>
+				<li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+				@php
+				$path = explode('/', Request::path());
+				foreach($path as $p)
+				{
+					echo '<li class="breadcrumb-item"><a href="/'.Request::path().'/">'.$p.'</a></li>';
+				}
+				@endphp
+			
+<!-- 				<li class="breadcrumb-item active" aria-current="page">Data</li> -->
 			</ol>
 		</nav>
 
-		<div class="row m-0 mt-sm-2 border-left-0 border-right-0">
-
-			<div class="col-lg-12">
+		<div class="content px-3">
 				@yield('content')
-			</div>
 		</div>
 	</div>
 

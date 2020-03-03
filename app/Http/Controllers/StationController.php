@@ -20,10 +20,12 @@ class StationController extends Controller
     public function index()
     {
         $stations = Station::all();
+			//$x = iz::find(1);
+			//dd($stations->izs->name);
         //$stations = Station::find(1)->lks()->orderBy('nameA')->get();
-        // echo '<pre>';
-        // var_dump($stations);
-        // echo '</pre>';
+//         echo '<pre>';
+//         var_dump($stations);
+//         echo '</pre>';
 
         // foreach ($stations->lks as $lkx) {
 

@@ -15,9 +15,9 @@
                         <tr>
                             <th style="width: 10px">#</th>
                             <th>Nazwa stacji</th>
-                            <th>Linia kolejowa</th>
-                            <th>Zakład linii kolejowych</th>
-                            <th>Ostatnia aktualizacja</th>
+                            <th class="d-none d-lg-table-cell">Linia kolejowa</th>
+                            <th class="d-none d-lg-table-cell">Zakład linii kolejowych</th>
+                            <th class="d-none d-lg-table-cell">Ostatnia aktualizacja</th>
                             <th>Akcja</th>
                         </tr>
                     </thead>
@@ -28,9 +28,9 @@
                             <td>
                                 <a href="{{route('stations.show', $station->id)}}">{{$station->name}}</a>
                             </td>
-                            <td>Linia Kolejowa nr 15</td>
-                            <td>Zakład Linii Kolejowych w Poznaniu</td>
-                            <td>{{$station->updated_at}}</td>
+                            <td class="d-none d-lg-table-cell">Linia Kolejowa nr 15</td>
+														<td class="d-none d-lg-table-cell"><a href="{{route('iz.index')}}">{{$station->izs->name}}</a></td>
+                            <td class="d-none d-lg-table-cell">{{$station->updated_at}}</td>
                             <td>
                                 <form action="{{ route('stations.destroy', $station->id) }}" method="POST">
                                     @csrf @method('delete')
