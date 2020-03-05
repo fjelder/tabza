@@ -1,6 +1,6 @@
 @extends('layouts.app') @section('title', 'Lista zwrotnic') @section('content')
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-12">
 		<div class="card">
 			<div class="card-header card-danger card-outline">
 				<h5 class="m-0">Istniejące zwrotnice stacji <span style="color:#0a829a;">{{ $station_name }}</span></h5>
@@ -12,7 +12,33 @@
 					{{ session('status') }}
 				</div>
 				@endif
-				<form action="{{route('railroad.update', [$station_id, null])}}" method="post">
+
+				<div class="row">
+					
+			
+				@forelse ($railroads as $railroad)
+				    <div class="col-lg-3">
+				    	<div class="form-group row mb-3">
+				    		<label for="" class="col-form-label col-2 pr-0">#{{$loop->iteration}}</label>
+				    		<input name="zwrotnica[{{$railroad->id}}]" type="text" class="form-control col-6" value="{{ $railroad->name }}">
+				    		<div class="col-2 pl-1">
+					    		<form action="{{ route('railroad.destroy', [$station_id, $railroad->id]) }}" method="POST">
+									@csrf @method('delete')
+					    		<button class="btn" type="submit"><i class="fas fa-trash-alt"></i></button>
+					    		</form>
+				    		</div>
+				    	</div>
+				    </div>
+				    
+				    <!-- @if(($loop->iteration % 4) == 0)
+					<div class="col-12 border-bottom mb-3"></div>
+				    @endif -->
+				@empty
+				    <p>Brak zdefiniowanuch zwrotnic.</p>
+				@endforelse
+				</div>
+
+				<!-- <form action="{{route('railroad.update', [$station_id, null])}}" method="post">
 					@csrf @method('put') @foreach ($railroads as $key => $railroad)
 					<div class="form-group row">
 						<label for="zwr1" class="col-sm-2 col-form-label">#{{$key+1}}</label>
@@ -30,7 +56,7 @@
 
 					</div>
 
-					@endforeach
+					@endforeach -->
 			</div>
 			<!-- /.card-body -->
 			<div class="card-footer">
