@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Railroad;
 use App\Station;
@@ -42,11 +42,20 @@ class RailroadController extends Controller
      */
     public function store(Request $request, $station_id)
     {
-        $railroad = new Railroad;
-        $dane = $request->all();
-        $railroad->fill($dane);
-        $railroad->station_id = $station_id;
-        $railroad->save();
+				$tablica = array_filter($request->input('name'));
+				foreach($tablica as $x)
+				{
+					$railroad = new Railroad;
+					$railroad->name = $x;
+					$railroad->station_id = $station_id;
+					$railroad->save();
+				}
+// 				dd($tablica);
+//         $railroad = new Railroad;
+//         $dane = $request->all();
+//         $railroad->fill($dane);
+//         $railroad->station_id = $station_id;
+//         $railroad->save();
         return redirect()->route('railroad.index', $station_id)->with('status', 'Zwrotnica została dodana');	
     }
 
@@ -83,6 +92,7 @@ class RailroadController extends Controller
     {
         //
         //$railroad = new Railroad;
+			dd($request->all());
         $tablica = array_filter($request->input('zwrotnica'));
         foreach($tablica as $key => $x)
         {
