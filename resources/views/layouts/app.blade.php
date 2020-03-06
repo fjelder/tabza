@@ -18,9 +18,7 @@
 </head>
 
 <body>
-
-	<div class="container p-0">
-			<nav class="navbar navbar-expand-md navbar-light bg-light border-bottom">
+<nav class="navbar navbar-expand-md navbar-light bg-light border-bottom">
 			<a class="navbar-brand" href="{{route('home')}}">{{ config('app.name', 'Laravel') }}</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -42,20 +40,6 @@
 						<a href="{{ route('home')}}/phpmyadmin" target="_blank" class="nav-link">phpmyadmin</a>
 					</li>
 
-<!-- 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Menu
-          </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<div class="dropdown-divider"></div>
-							<a href="{{ route('stations.index') }}" class="dropdown-item active"><i class="fab fa-artstation"></i> Stacje</a>
-							<a href="{{ route('lk.index') }}" class="dropdown-item"><i class="fas fa-subway"></i> Linie kolejowe</a>
-							<a href="{{ route('iz.index') }}" class="dropdown-item"><i class="fas fa-home"></i> Zakłady linii kolejowych</a>
-						</div>
-					</li> -->
-
 				</ul>
 				<form action="" method="get" class="form-inline my-2 my-lg-0">
 					<input name="search" class="form-control mr-sm-2" type="search" placeholder="{{Request::path()}}">
@@ -63,23 +47,11 @@
 				</form>
 			</div>
 		</nav>
-
-		<nav aria-label="breadcrumb" class="mt-2">
-			<ol class="breadcrumb " style="background: none">
-				<li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-				@php
-				$path = explode('/', Request::path());
-				foreach($path as $p)
-				{
-					echo '<li class="breadcrumb-item"><a href="/'.Request::path().'/">'.$p.'</a></li>';
-				}
-				@endphp
+	<div class="container-fluid">
 			
-<!-- 				<li class="breadcrumb-item active" aria-current="page">Data</li> -->
-			</ol>
-		</nav>
 
-		<div class="content m-0 mb-5">
+
+		<div class="content my-5 p-1">
 				@yield('content')
 		</div>
 	</div>

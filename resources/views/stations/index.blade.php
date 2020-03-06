@@ -2,15 +2,11 @@
 @section('title', 'Lista stacji')
 @section('content')
 <div class="row">
-    <div class="col-md-12">
-        <div class="card card-primary card-outline">
-            <div class="card-header">
-                <h5 class="card-title">Lista stacji</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Wykaz wszystkich stacji w systemie</h6>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body p-0 table-responsive">
-                <table class="table table-hover text-nowrap">
+    <div class="col-12">
+                <h5>Lista stacji</h5>
+                <h6 class="text-muted">Wykaz wszystkich stacji w systemie</h6>
+
+                <table class="table table-hover text-nowrap table-striped">
                     <thead>
                         <tr>
                             <th style="width: 10px">#</th>
@@ -30,7 +26,7 @@
                             </td>
                             <td class="d-none d-lg-table-cell">Linia Kolejowa nr 15</td>
 														<td class="d-none d-lg-table-cell"><a href="{{route('iz.index')}}">{{$station->izs->name}}</a></td>
-                            <td class="d-none d-lg-table-cell">{{$station->updated_at}}</td>
+                            <td class="d-none d-lg-table-cell">{{$station->updated_at->format('d.m.Y')}}r.</td>
                             <td>
                                 <form action="{{ route('stations.destroy', $station->id) }}" method="POST">
                                     @csrf @method('delete')
@@ -47,13 +43,8 @@
                         </tbody>
                     </table>
 
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
                     <a href="{{route('stations.create')}}" class="btn btn-primary btn-float">Dodaj nową stację</a>
-                </div>
-            </div>
-            <!-- /.card -->
+
         </div>
     </div>
     <!-- row -->

@@ -1,104 +1,144 @@
-@extends('layouts.app') @section('title', 'Lista stacji') @section('card_title', 'Stacja ::: '.$station->name ) @section('content')
+@extends('layouts.app') 
+@section('title', 'Stacja '.$station->name) 
+@section('content')
+<div class="row">
+	<div class="col-12">
+		<h3>Stacja {{ $station->name }} <small class="text-muted"> --Utw. {{ $station->created_at->format('d.m.Y') }} # Akt. {{ $station->updated_at->format('d.m.Y') }}</small> </h3>
+		<h6 class="text-muted">
+			<a href="{{route('stations.edit', $station->id)}}">#Edytuj szczegóły stacji</a>
+		</h6>
+		<div class="card-columns">
+			
+			@isset($station->lks)
+			<div class="card">
+				<div class="card-body">
+					@if(count($station->lks) > 1)
+					<h5>Linie kolejowa</h5>
+					@else
+					<h5>Linia kolejowa</h5>
+					@endif
+					<ul>
+						@foreach($station->lks as $lk)
+						<li>nr {{$lk->number}} {{$lk->nameA}} - {{$lk->nameB}}</li>
+						@endforeach
+					</ul>
+					<p>{{$station->izs->name}}</p>
+				</div>
+				<!-- card-body -->
+			</div>
+			<!-- card -->
+			@endisset
 
-<div class="col-sm-12">
-	<div class="card">
-		<div class="card-header">
-			<h5 class="card-title d-inline">Stacja_{{ $station->name }}</h5>
-			<h6 class="card-subtitle mb-2 text-muted d-inline">
-				<a href="{{route('stations.edit', $station->id)}}">#Edytuj szczegóły stacji</a>
-			</h6>
-		</div>
+			@isset($railroads)
+			<div class="card">
+				<div class="card-body">
+					<h5>Zwrotnice</h5>
+					<ul>
+						@foreach($railroads as $railroad)
+						<li>{{$railroad->name}}</li>
+						@endforeach
+					</ul>
+					<p class="card-text"><a href="{{ route('railroad.index', $station->id) }}" class="btn btn-primary btn-sm">Edytuj</a></p>
+				</div>
+				<!-- card-body -->
+			</div>
+			<!-- card -->
+			@endisset
 
-		<div class="card-body">
-			<table class="table table-hover">
-				<tr>
-					<th scope="col">Linia kolejowa</th>
-					<td colspan="2">
-						@isset($station->lks)
-						<ul>
-							@foreach($station->lks as $lk)
-							<li>nr {{$lk->number}} {{$lk->nameA}} - {{$lk->nameB}}</li>
-							@endforeach
-						</ul>
-						@endisset
-					</td>
-				</tr>
-
-				<tr>
-					<th>Zakład linii kolejowych</th>
-					<td colspan="2">
-						<p>{{ Str::replaceFirst('Zakład Linii Kolejowych', '', $station->izs->name) }}</p>
-					</td>
-				</tr>
-
-				<tr>
-					<th>Zwrotnice</th>
-<!-- 					<td>
-						@isset($railroads)
-						<ul>
+			@isset($railroads)
+			<div class="card">
+				<div class="card-body">
+					<h5>Odcinki izolowane</h5>
+					<div class="row">
+						<div class="col-sm-6">
+							<p class="card-text">torowe</p>
+							<ul>
 							@foreach($railroads as $railroad)
 							<li>{{$railroad->name}}</li>
 							@endforeach
-						</ul>
-						@endisset
-					</td> -->
-					<td>
-						@isset($railroads)
-							<table class="table">
-									<tr>
-										
-										<td>
-										<ul>
-											@foreach($railroads as $railroad)
-											<li>{{$railroad->name}}</li>
-											@endforeach
-										</ul>
-										
-										</td>
-										
-										</tr>
-								
-								</table>
-						@endisset
-					</td>
-					<td><a href="{{ route('railroad.index', $station->id) }}" class="">Edytuj</a></td>
-				</tr>
+							</ul>
+						</div>
+						<!-- col-sm-6 -->
 
-				<tr>
-					<th>Odcinki izolowane</th>
-					<td>
-						<p>torowe:</p>
-						<p>zwrotnicowe:</p>
-					</td>
-					<td><a href="{{ route('railroad.index', $station->id) }}" class="">Edytuj</a></td>
-				</tr>
+						<div class="col-sm-6">
+							<p class="card-text">zwrotnicowe</p>
+							<ul>
+							@foreach($railroads as $railroad)
+							<li>{{$railroad->name}}</li>
+							@endforeach
+							</ul>
+						</div>
+						<!-- col-sm-6 -->
+					</div>
+					<!-- row -->
 
-				<tr>
-					<th>Wykaz przebiegów</th>
-					<td>
-						<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem deleniti totam unde laborum. Dolorem commodi autem hic rerum fugit, soluta quo doloribus, ipsum deleniti ullam vero mollitia quaerat nobis vitae quam officiis in. A aspernatur beatae, ex labore molestiae officia dolor magni dignissimos soluta illo veniam, enim obcaecati odit. Tenetur rerum qui excepturi iure, neque ad impedit itaque consequuntur. Soluta delectus magni tenetur, dolore, vero sit recusandae voluptate consequuntur deserunt temporibus minima, hic exercitationem debitis ipsa impedit distinctio reiciendis omnis ab nobis. Dolores, doloremque assumenda perferendis. Consectetur in perspiciatis tenetur aperiam alias eveniet quisquam reprehenderit perferendis officia iste doloribus distinctio ex iusto quasi, tempora consequuntur voluptatibus vitae incidunt sint quod dolore exercitationem! Ut laboriosam in dicta, nobis atque odio sint sapiente eum, blanditiis possimus pariatur iste animi nihil rerum laborum ad ratione optio eaque omnis sequi rem repudiandae. Incidunt rerum est animi quae id veritatis perferendis debitis quis possimus aspernatur.</p>
-					</td>
-					<td><a href="{{ route('railroad.index', $station->id) }}" class="">Edytuj</a></td>
-				</tr>
-			</table>
-		</div>
-
-		<div class="card-footer text-right">
-			Utw. {{ $station->created_at->format('d.m.Y') }} # Akt. {{ $station->updated_at->format('d.m.Y') }}
-
+					<p class="card-text"><a href="{{ route('railroad.index', $station->id) }}" class="btn btn-primary btn-sm">Edytuj</a></p>
+				</div>
+				<!-- card-body -->
+			</div>
+			<!-- card -->
+			@endisset
 
 		</div>
-
+		<!-- card-column -->
 
 	</div>
+	<!-- col-12 -->
 
-
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				<h5>Wykaz przebiegów</h5>
+				<table class="table table-striped table-sm table-responsive-sm">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Sygnał</th>
+							<th scope="col">Nazwa przebiegu</th>
+							<th scope="col">Sekcja/Wariant</th>
+							<th scope="col">Zwrotnice</th>
+							<th scope="col">Odcinki izolowane torowe</th>
+							<th scope="col">Odcinki izolowane zwrotnicowe</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<th scope="row">3</th>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="card-text"><a href="{{ route('railroad.index', $station->id) }}" class="btn btn-primary btn-sm">Edytuj</a></p>
+			</div>
+			<!-- card-body -->
+		</div>
+		<!-- card -->
+	</div>
+	<!-- col-12 -->
 </div>
-
-
-
-</div>
-
-
+<!-- row -->
 
 @endsection
