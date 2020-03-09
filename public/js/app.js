@@ -1,4 +1,4 @@
-(function($) {
+$(document).ready(function(){
 
 	"use strict";
 
@@ -27,6 +27,13 @@
 			$(this).append('#');
 			$(this).append(index+1);
 		});
-	})
+	});
 
-})(jQuery);
+	var rows = $("#cRow").val();
+	var container = $('.addInput');
+	// container.empty();
+	for (var i = 0; i < rows; i++) {
+		container.append('<div class="col-4 col-lg-2"><label for="" class="col-form-label">#'+(i+1)+'</label><input type="text" class="form-control"></div>');
+	};
+});  
+
